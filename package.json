@@ -2,6 +2,16 @@
   "name": "vue-workshop-new-try",
   "version": "0.1.0",
   "private": true,
+  "files": [
+    "dist",
+    "server.js",
+    "workshop-app.js",
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -11,8 +21,14 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "html-loader": "^2.1.2",
+    "markdown-loader": "^6.0.0",
+    "msw": "^0.35.0",
+    "normalize.css": "^8.0.1",
+    "prismjs": "^1.24.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
+    "vue3-tabs": "^0.1.12",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
