@@ -7,12 +7,12 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        prependData: `@import "@/scss/_variables.scss";`
-      }
-    }
+        prependData: `@import "@/scss/_variables.scss";`,
+      },
+    },
   },
   // runtimeCompiler: true,
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.module
       .rule("html")
       .test(/(exercise|final).*\.html$/)
@@ -34,9 +34,9 @@ module.exports = {
     return {
       plugins: [
         new webpack.DefinePlugin({
-          WORKSHOP_FILES: JSON.stringify(workshopFiles)
-        })
-      ]
+          WORKSHOP_FILES: JSON.stringify(workshopFiles),
+        }),
+      ],
     };
-  }
+  },
 };
