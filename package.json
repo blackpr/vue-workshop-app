@@ -1,6 +1,6 @@
 {
   "name": "@blackpr/vue-workshop-app",
-  "version": "0.0.9",
+  "version": "0.0.14",
   "description": "an abstarction for my vue workshops",
   "repository": {
     "type": "git",
