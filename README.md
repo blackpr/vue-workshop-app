@@ -41,3 +41,7 @@ timsWorkshop.makeWorkshopApp({
   - create .npmrc with content: `registry=http://localhost:4873`
 
 example: [vue-workshop-example-usage](https://github.com/blackpr/vue-workshop-example-usage)
+
+## publish
+- `npm run build`
+- `npm publish`
