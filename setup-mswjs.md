@@ -1,0 +1,3 @@
+- npx msw init <PUBLIC_DIR> | `npx msw init public/`
+- create `backend.js` with handlers
+- pass the `backend` to `makeWorkshopApp`
