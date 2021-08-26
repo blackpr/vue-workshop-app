@@ -1,34 +1,43 @@
-# vue-workshop-new-try
+# vue-workshop-app
 
-## Project setup
-```
-npm install
+> an abstarction for my vue workshops
+
+## usage:
+- create new vue project with `vue cli`
+- run `vue add @blackpr/vue-cli-plugin-workshop-app`
+- install `npm i @blackpr/vue-workshop-app` 
+- add backend if needed
+  - create `src/backend.js`
+  - run `npx msw init public/`
+- create `src/exercise` and `src/final`
+- use workshop in main.js 
+```js
+import * as timsWorkshop from "@blackpr/vue-workshop-app/workshop-app";
+import "@blackpr/vue-workshop-app/dist/workshop-app.css";
+
+// @ts-ignore
+// eslint-disable-next-line no-undef
+const filesInfo = WORKSHOP_FILES;
+import * as backend from "./backend";
+
+const imports = filesInfo
+  .filter((item) => ["exercise", "final"].includes(item.type))
+  .reduce((acc, curr) => {
+    acc[curr.filePath] = () =>
+      import(`@/${curr.type}/${curr.filename}${curr.ext}`);
+    return acc;
+  }, {});
+
+timsWorkshop.makeWorkshopApp({
+  imports,
+  filesInfo,
+  projectTitle: "Testing Vue 3",
+  gitHubRepoUrl: "https://github.com/blackpr/vue-fundamentals",
+  backend,
+});
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- Until I publish the dep in npm use verdacio
+  - create .npmrc with content: `registry=http://localhost:4873`
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+example: [vue-workshop-example-usage](https://github.com/blackpr/vue-workshop-example-usage)
