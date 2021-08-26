@@ -9,7 +9,7 @@ export default function useExerciseInfo(filesInfo) {
         fileInfo.number
       ] ?? {
         exercise: [],
-        final: []
+        final: [],
       };
       const info = exerciseInfo.value[fileInfo.number];
       if (fileInfo.type === "instruction") {
@@ -23,7 +23,7 @@ export default function useExerciseInfo(filesInfo) {
   }
 
   const infoWithNextPrev = computed(() =>
-    exerciseInfo.value.filter(Boolean).map(inf => {
+    exerciseInfo.value.filter(Boolean).map((inf) => {
       inf.next = exerciseInfo.value[inf.number + 1];
       inf.previous = exerciseInfo.value[inf.number - 1];
 

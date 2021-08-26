@@ -25,21 +25,21 @@ export default {
   name: "Header",
   components: {
     VueLogo,
-    HeaderExercises
+    HeaderExercises,
   },
   props: {
     projectTitle: {
       type: String,
-      required: true
+      required: true,
     },
     exerciseInfo: {
       type: Array,
-      required: true
+      required: true,
     },
     currentExercise: {
-      type: Object
-    }
-  }
+      type: Object,
+    },
+  },
 };
 </script>
 

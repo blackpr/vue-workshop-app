@@ -11,7 +11,7 @@ function loadFiles({
     "**/backend.js",
     "**/setupTests.js",
     "**/setupProxy.js",
-    "**/*.d.ts"
+    "**/*.d.ts",
   ],
   ...rest
 } = {}) {
@@ -21,11 +21,11 @@ function loadFiles({
       {
         cwd,
         ignore,
-        ...rest
+        ...rest,
       }
     )
     // eslint-disable-next-line complexity
-    .map(filePath => {
+    .map((filePath) => {
       const fullFilePath = path.join(cwd, filePath);
       const { dir, name, ext } = path.parse(fullFilePath);
       const parentDir = path.basename(dir);
@@ -79,7 +79,7 @@ function loadFiles({
         number: Number((name.match(/(^\d+)/) || [null])[0]),
         isExtraCredit,
         extraCreditNumber: Number((name.match(/(\d+$)/) || [null])[0]),
-        extraCreditTitle
+        extraCreditTitle,
       };
     });
 

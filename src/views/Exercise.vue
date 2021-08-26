@@ -21,21 +21,21 @@ export default {
   name: "Excercise",
   components: {
     ExerciseResults,
-    ExerciseInstruction
+    ExerciseInstruction,
   },
   props: {
     filesInfo: {
       type: Array,
-      required: true
+      required: true,
     },
     projectTitle: {
       type: String,
-      required: true
+      required: true,
     },
     gitHubRepoUrl: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     const exerciseInfo = useExerciseInfo(props.filesInfo);
@@ -47,7 +47,7 @@ export default {
     );
 
     return { exerciseInfo, currentExercise };
-  }
+  },
 };
 </script>
 

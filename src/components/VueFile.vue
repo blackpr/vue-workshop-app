@@ -6,15 +6,15 @@ export default {
   props: {
     fileName: {
       type: String,
-      required: true
+      required: true,
     },
     fileType: {
       type: String,
       validator(value) {
         return ["exercise", "final"].includes(value);
       },
-      required: true
-    }
+      required: true,
+    },
   },
 
   render() {
@@ -22,6 +22,6 @@ export default {
       import(`@/${this.fileType}/${this.fileName}`)
     );
     return h(Component);
-  }
+  },
 };
 </script>

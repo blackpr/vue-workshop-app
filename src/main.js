@@ -49,6 +49,7 @@ function makeWorkshopApp({
     server.start({
       quiet,
       serviceWorker,
+      onUnhandledRequest: "bypass",
       ...rest,
     });
   }
@@ -246,23 +247,23 @@ function makeWorkshopApp({
 //----usage
 // @ts-ignore
 // eslint-disable-next-line no-undef
-// const filesInfo = WORKSHOP_FILES;
-// import * as backend from "./backend";
+const filesInfo = WORKSHOP_FILES;
+import * as backend from "./backend";
 
-// const imports = filesInfo
-//   .filter(item => ["exercise", "final"].includes(item.type))
-//   .reduce((acc, curr) => {
-//     acc[curr.filePath] = () =>
-//       import(`@/${curr.type}/${curr.filename}${curr.ext}`);
-//     return acc;
-//   }, {});
-
-// makeWorkshopApp({
-//   imports,
-//   filesInfo,
-//   projectTitle: "Testing Vue 3",
-//   gitHubRepoUrl: "https://github.com/blackpr/vue-fundamentals",
-//   backend
-// });
+const imports = filesInfo
+  .filter((item) => ["exercise", "final"].includes(item.type))
+  .reduce((acc, curr) => {
+    acc[curr.filePath] = () =>
+      import(`@/${curr.type}/${curr.filename}${curr.ext}`);
+    return acc;
+  }, {});
+console.log(backend);
+makeWorkshopApp({
+  imports,
+  filesInfo,
+  projectTitle: "Testing Vue 3",
+  gitHubRepoUrl: "https://github.com/blackpr/vue-fundamentals",
+  backend,
+});
 
 export { makeWorkshopApp };

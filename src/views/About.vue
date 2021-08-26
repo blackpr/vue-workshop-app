@@ -11,6 +11,6 @@ import MdFile from "@/components/MdFile.vue";
 
 export default {
   name: "AboutPage",
-  components: { VueFile, MdFile }
+  components: { VueFile, MdFile },
 };
 </script>

@@ -14,10 +14,10 @@ export default function useHighlight() {
           punctuation: /^{{|}}$/,
           "inline-js language-js": {
             pattern: /.*/,
-            inside: Prism.languages.javascript
-          }
-        }
-      }
+            inside: Prism.languages.javascript,
+          },
+        },
+      },
     });
 
     Prism.languages["vue"].tag.inside = Prism.languages.insertBefore(
@@ -25,7 +25,8 @@ export default function useHighlight() {
       "attr-value",
       {
         directive: {
-          pattern: /(?<=\s)((v-[a-z0-9-]+)|:|@|#)(((?<=[:@#])|:)([a-z0-9-]+|(\[[^\]]+\])))?(\.[a-z0-9]+)*="[^"]+"/i,
+          pattern:
+            /(?<=\s)((v-[a-z0-9-]+)|:|@|#)(((?<=[:@#])|:)([a-z0-9-]+|(\[[^\]]+\])))?(\.[a-z0-9]+)*="[^"]+"/i,
           inside: {
             "punctuation directive-shorthand": /^[:@#]/,
             "identifier directive-name": /^v-[a-z0-9-]+/i,
@@ -34,8 +35,8 @@ export default function useHighlight() {
                 pattern: /^((?<=[:@#])|:)[a-z0-9-]+/i,
                 inside: {
                   punctuation: /^:/,
-                  identifier: /[a-z0-9-]+/i
-                }
+                  identifier: /[a-z0-9-]+/i,
+                },
               },
               {
                 pattern: /^((?<=[:@#])|:)(\[[^\]]+\])/,
@@ -43,17 +44,17 @@ export default function useHighlight() {
                   punctuation: /^\[|\]$/,
                   "inline-js language-js": {
                     pattern: /.*/,
-                    inside: Prism.languages.javascript
-                  }
-                }
-              }
+                    inside: Prism.languages.javascript,
+                  },
+                },
+              },
             ],
             "directive-modifier": {
               pattern: /^.[a-z0-9-]+/i,
               inside: {
                 punctuation: /^./,
-                identifier: /[a-z0-9-]+/i
-              }
+                identifier: /[a-z0-9-]+/i,
+              },
             },
             "directive-expression": {
               pattern: /^=(?:"[^"]*"|'[^']*'|[^\s'">=]+)/i,
@@ -61,12 +62,12 @@ export default function useHighlight() {
                 punctuation: [/^=/, /^["']|["']$/],
                 "inline-js language-js": {
                   pattern: /.*/,
-                  inside: Prism.languages.javascript
-                }
-              }
-            }
-          }
-        }
+                  inside: Prism.languages.javascript,
+                },
+              },
+            },
+          },
+        },
       },
       Prism.languages["vue"].tag
     );

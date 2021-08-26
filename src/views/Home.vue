@@ -16,23 +16,23 @@ export default {
   name: "Home",
   components: {
     VueLogo,
-    HomeExercisesList
+    HomeExercisesList,
   },
   props: {
     filesInfo: {
       type: Array,
-      required: true
+      required: true,
     },
     projectTitle: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     const exerciseInfo = useExerciseInfo(props.filesInfo);
 
     return { exerciseInfo };
-  }
+  },
 };
 </script>
 

@@ -26,6 +26,6 @@ export default {
   data: () => ({ title: "03.vue" }),
   mounted() {
     console.log("mounted 03.app.vue");
-  }
+  },
 };
 </script>

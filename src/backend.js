@@ -19,11 +19,11 @@ export const handlers = [
   rest.get("/pokemoney/:pokemonName", (req, res, ctx) => {
     const { pokemonName } = req.params;
 
-    const upperName = name =>
+    const upperName = (name) =>
       `${name.slice(0, 1).toUpperCase()}${name.slice(1)}`;
 
     const pokemonTransactions = allTransactions.filter(
-      t => t.recipient !== pokemonName
+      (t) => t.recipient !== pokemonName
     );
     const user = allUsers[pokemonName];
     if (!user) {
@@ -35,10 +35,10 @@ export const handlers = [
       ctx.json({
         transactions: pokemonTransactions,
         friends: Object.keys(allUsers)
-          .filter(u => pokemonName !== u)
-          .map(n => upperName(n)),
+          .filter((u) => pokemonName !== u)
+          .map((n) => upperName(n)),
         ...user,
-        name: upperName(pokemonName)
+        name: upperName(pokemonName),
       })
     );
   }),
@@ -54,12 +54,12 @@ export const handlers = [
         ctx.status(404),
         ctx.errors([
           {
-            message: `Unsupported pokemon: "${req.variables.name}". Try "${randomName}"`
-          }
+            message: `Unsupported pokemon: "${req.variables.name}". Try "${randomName}"`,
+          },
         ])
       );
     }
-  })
+  }),
 ];
 
 const allPokemon = {
@@ -73,20 +73,20 @@ const allPokemon = {
         {
           name: "Discharge",
           type: "Electric",
-          damage: 35
+          damage: 35,
         },
         {
           name: "Thunder",
           type: "Electric",
-          damage: 100
+          damage: 100,
         },
         {
           name: "Thunderbolt",
           type: "Electric",
-          damage: 55
-        }
-      ]
-    }
+          damage: 55,
+        },
+      ],
+    },
   },
   mew: {
     id: "UG9rZW1vbjoxNTE=",
@@ -98,50 +98,50 @@ const allPokemon = {
         {
           name: "Dragon Pulse",
           type: "Dragon",
-          damage: 65
+          damage: 65,
         },
         {
           name: "Earthquake",
           type: "Ground",
-          damage: 100
+          damage: 100,
         },
         {
           name: "Fire Blast",
           type: "Fire",
-          damage: 100
+          damage: 100,
         },
         {
           name: "Hurricane",
           type: "Flying",
-          damage: 80
+          damage: 80,
         },
         {
           name: "Hyper Beam",
           type: "Normal",
-          damage: 120
+          damage: 120,
         },
         {
           name: "Moonblast",
           type: "Fairy",
-          damage: 85
+          damage: 85,
         },
         {
           name: "Psychic",
           type: "Psychic",
-          damage: 55
+          damage: 55,
         },
         {
           name: "Solar Beam",
           type: "Grass",
-          damage: 120
+          damage: 120,
         },
         {
           name: "Thunder",
           type: "Electric",
-          damage: 100
-        }
-      ]
-    }
+          damage: 100,
+        },
+      ],
+    },
   },
   mewtwo: {
     id: "UG9rZW1vbjoxNTA=",
@@ -153,20 +153,20 @@ const allPokemon = {
         {
           name: "Hyper Beam",
           type: "Normal",
-          damage: 120
+          damage: 120,
         },
         {
           name: "Psychic",
           type: "Psychic",
-          damage: 55
+          damage: 55,
         },
         {
           name: "Shadow Ball",
           type: "Ghost",
-          damage: 45
-        }
-      ]
-    }
+          damage: 45,
+        },
+      ],
+    },
   },
   ditto: {
     id: "UG9rZW1vbjoxMzI=",
@@ -178,10 +178,10 @@ const allPokemon = {
         {
           name: "Struggle",
           type: "Normal",
-          damage: 15
-        }
-      ]
-    }
+          damage: 15,
+        },
+      ],
+    },
   },
   charizard: {
     id: "UG9rZW1vbjowMDY=",
@@ -193,20 +193,20 @@ const allPokemon = {
         {
           name: "Dragon Claw",
           type: "Dragon",
-          damage: 35
+          damage: 35,
         },
         {
           name: "Fire Blast",
           type: "Fire",
-          damage: 100
+          damage: 100,
         },
         {
           name: "Flamethrower",
           type: "Fire",
-          damage: 55
-        }
-      ]
-    }
+          damage: 55,
+        },
+      ],
+    },
   },
   bulbasaur: {
     id: "UG9rZW1vbjowMDE=",
@@ -218,21 +218,21 @@ const allPokemon = {
         {
           name: "Power Whip",
           type: "Grass",
-          damage: 70
+          damage: 70,
         },
         {
           name: "Seed Bomb",
           type: "Grass",
-          damage: 40
+          damage: 40,
         },
         {
           name: "Sludge Bomb",
           type: "Poison",
-          damage: 55
-        }
-      ]
-    }
-  }
+          damage: 55,
+        },
+      ],
+    },
+  },
 };
 
 const allTransactions = [
@@ -240,89 +240,89 @@ const allTransactions = [
     id: "4P812765GHI029827",
     recipient: "mew",
     amount: "$ 15.34",
-    message: "Thanks for the salad 🥗"
+    message: "Thanks for the salad 🥗",
   },
   {
     id: "90X21040KL118401T",
     recipient: "charizard",
     amount: "$ 20.00",
     message:
-      "Thanks for the tip about Gyarados 🌊. I never would have won otherwise 😈"
+      "Thanks for the tip about Gyarados 🌊. I never would have won otherwise 😈",
   },
   {
     id: "89UI190WJJ2240023",
     recipient: "bulbasaur",
     amount: "$ 25.00",
-    message: "That play was awesome 🎭. Thanks again for inviting me."
+    message: "That play was awesome 🎭. Thanks again for inviting me.",
   },
   {
     id: "0A6FJI65K8173802P",
     recipient: "ditto",
     amount: "$ 12.21",
-    message: "blub."
+    message: "blub.",
   },
   {
     id: "9CF911038X034441W",
     recipient: "mewtwo",
     amount: "$ 35.00",
     message:
-      "Still can't believe 🔥 Charizard 🔥 won. That's the last time I bet against him."
+      "Still can't believe 🔥 Charizard 🔥 won. That's the last time I bet against him.",
   },
   {
     id: "48L3561JH8132451D",
     recipient: "pikachu",
     amount: "$ 91.10",
-    message: "That was ELECTRIC ⚡"
+    message: "That was ELECTRIC ⚡",
   },
   {
     id: "6CG59877V61376422",
     recipient: "ditto",
     amount: "$ 98.89",
-    message: "blub."
+    message: "blub.",
   },
   {
     id: "U8991IJW02J204032",
     recipient: "bulbasaur",
     amount: "$ 15.98",
-    message: "Thanks again for the loan 💵"
+    message: "Thanks again for the loan 💵",
   },
   {
     id: "8XS08JI93J918102S",
     recipient: "charizard",
     amount: "$ 45.14",
-    message: "Lunch was delicious, thank you!"
+    message: "Lunch was delicious, thank you!",
   },
   {
     id: "21CWW205ND917964J",
     recipient: "mew",
     amount: "$ 12.87",
-    message: "Thanks again for the ride 🍃"
-  }
+    message: "Thanks again for the ride 🍃",
+  },
 ];
 
 const allUsers = {
   pikachu: {
     name: "Pikachu",
-    color: "#EDD37E"
+    color: "#EDD37E",
   },
   mew: {
     name: "Mew",
-    color: "#ECC4D0"
+    color: "#ECC4D0",
   },
   mewtwo: {
     name: "Mewtwo",
-    color: "#BAABBA"
+    color: "#BAABBA",
   },
   ditto: {
     name: "Ditto",
-    color: "#BDAED1"
+    color: "#BDAED1",
   },
   charizard: {
     name: "Charizard",
-    color: "#EAC492"
+    color: "#EAC492",
   },
   bulbasaur: {
     name: "Bulbasaur",
-    color: "#7DAD96"
-  }
+    color: "#7DAD96",
+  },
 };

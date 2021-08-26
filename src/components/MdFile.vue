@@ -6,16 +6,16 @@ export default {
   props: {
     fileName: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
 
   render() {
     return h("div", {
       class: "md-content",
-      innerHTML: require(`@/exercise/${this.fileName}`)
+      innerHTML: require(`@/exercise/${this.fileName}`),
     });
-  }
+  },
 };
 </script>
 

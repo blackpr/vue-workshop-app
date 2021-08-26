@@ -38,17 +38,17 @@ export default {
   components: {
     PrevIco,
     NextIco,
-    HeaderExercisesNavigationDots
+    HeaderExercisesNavigationDots,
   },
   props: {
     currentExercise: {
-      type: Object
+      type: Object,
     },
     exerciseInfo: {
       type: Array,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>
 

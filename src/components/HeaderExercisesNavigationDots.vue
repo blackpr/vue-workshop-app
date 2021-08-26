@@ -26,18 +26,18 @@ export default {
   props: {
     exerciseInfo: {
       type: Array,
-      required: true
+      required: true,
     },
     currentId: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   methods: {
     navigateToExercise(exerciseNumber) {
       this.$router.push(`/${exerciseNumber}`);
-    }
-  }
+    },
+  },
 };
 </script>
 

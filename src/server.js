@@ -2,7 +2,7 @@ import { setupWorker } from "msw";
 import { setupServer } from "msw/node";
 import { match } from "node-match-path";
 
-const getKey = name => `__react_workshop_app_${name}__`;
+const getKey = (name) => `__vue_workshop_app_${name}__`;
 
 function getDefaultDelay() {
   const variableTime = ls(getKey("variable_request_time"), 400);
@@ -11,7 +11,7 @@ function getDefaultDelay() {
 }
 
 function sleep(t = getDefaultDelay()) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (process.env.NODE_ENV === "test") {
       resolve();
     } else {
@@ -31,31 +31,31 @@ function ls(key, defaultVal) {
 
 const server = {};
 function setup({ handlers }) {
-  const enhancedHandlers = handlers.map(handler => {
-    return {
-      ...handler,
-      async resolver(req, res, ctx) {
-        try {
-          if (shouldFail(req)) {
-            throw new Error("Request failure (for testing purposes).");
-          }
-          const result = await handler.resolver(req, res, ctx);
-          return result;
-        } catch (error) {
-          const status = error.status || 500;
-          return res(
-            ctx.status(status),
-            ctx.json({ status, message: error.message || "Unknown Error" })
-          );
-        } finally {
-          let delay;
-          if (req.headers.has("delay")) {
-            delay = Number(req.headers.get("delay"));
-          }
-          await sleep(delay);
+  const enhancedHandlers = handlers.map((handler) => {
+    const originalResolver = handler.resolver;
+    const enhancedResolver = async (req, res, ctx) => {
+      try {
+        if (shouldFail(req)) {
+          throw new Error("Request failure (for testing purposes).");
         }
+        const result = await originalResolver(req, res, ctx);
+        return result;
+      } catch (error) {
+        const status = error.status || 500;
+        return await res(
+          ctx.status(status),
+          ctx.json({ status, message: error.message || "Unknown Error" })
+        );
+      } finally {
+        let delay;
+        if (req.headers.has("delay")) {
+          delay = Number(req.headers.get("delay"));
+        }
+        await sleep(delay);
       }
     };
+    handler.resolver = enhancedResolver;
+    return handler;
   });
   if (process.env.NODE_ENV === "test") {
     Object.assign(server, setupServer(...enhancedHandlers));

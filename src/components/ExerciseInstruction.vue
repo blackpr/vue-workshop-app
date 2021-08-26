@@ -15,8 +15,8 @@ export default {
   props: {
     currentExercise: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     const { currentExercise } = toRefs(props);
@@ -28,7 +28,7 @@ export default {
     useHighlight();
 
     return { filename };
-  }
+  },
 };
 </script>
 

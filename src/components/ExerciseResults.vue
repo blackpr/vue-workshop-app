@@ -31,13 +31,13 @@ const tabsType = [
   {
     label: "⚒️ Exercise",
     value: "exercise",
-    description: "desc1"
+    description: "desc1",
   },
   {
     label: "🏁 Final",
     value: "final",
-    description: "desc2"
-  }
+    description: "desc2",
+  },
   // {
   //   label: "Tab 3",
   //   value: 3,
@@ -54,17 +54,17 @@ export default {
     Tab,
     TabPanels,
     TabPanel,
-    ExerciseResultsTabPanel
+    ExerciseResultsTabPanel,
   },
   props: {
     currentExercise: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   setup() {
     const state = reactive({
-      selectedTabType: tabsType[0].value
+      selectedTabType: tabsType[0].value,
     });
     function getActive(tab) {
       return state.selectedTabType === tab;
@@ -72,9 +72,9 @@ export default {
     return {
       tabsType,
       getActive,
-      ...toRefs(state)
+      ...toRefs(state),
     };
-  }
+  },
 };
 </script>
 

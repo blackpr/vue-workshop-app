@@ -61,17 +61,17 @@ export default {
     Tabs,
     Tab,
     TabPanels,
-    TabPanel
+    TabPanel,
   },
   props: {
     currentExercise: {
       type: Object,
-      required: true
+      required: true,
     },
     selectedTabType: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     const selectedExerciseType = computed(
@@ -87,16 +87,16 @@ export default {
         props.currentExercise?.[props.selectedTabType]?.[selectedTabIndex.value]
     );
 
-    const getActive = index => index === selectedTabIndex.value;
+    const getActive = (index) => index === selectedTabIndex.value;
 
     return {
       showMoreTabs,
       selectedTabIndex,
       selectedExercise,
       selectedExerciseType,
-      getActive
+      getActive,
     };
-  }
+  },
 };
 </script>
 

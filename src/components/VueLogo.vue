@@ -7,7 +7,7 @@
     x="0px"
     y="0px"
     viewBox="0 0 512 512"
-    style="enable-background:new 0 0 512 512;"
+    style="enable-background: new 0 0 512 512"
     xml:space="preserve"
   >
     <g>
@@ -25,8 +25,8 @@ export default {
   props: {
     color: {
       type: String,
-      default: "#3eaf7c"
-    }
-  }
+      default: "#3eaf7c",
+    },
+  },
 };
 </script>
